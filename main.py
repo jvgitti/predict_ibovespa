@@ -26,3 +26,12 @@ with tab0:
     plt.title('Índice Bovespa')
     st.pyplot(plt)
 
+    plt.figure()
+    resultados = seasonal_decompose(df, period=247)
+    fig, axes = plt.subplots(4, 1, figsize=(15,10))
+    resultados.observed.plot(ax=axes[0])
+    resultados.trend.plot(ax=axes[1])
+    resultados.seasonal.plot(ax=axes[2])
+    resultados.resid.plot(ax=axes[3])
+    plt.tight_layout()
+    st.pyplot(plt)
