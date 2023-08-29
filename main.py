@@ -19,6 +19,13 @@ df.columns = ['ds', 'y']
 df = df.set_index('ds')
 
 with tab0:
+    """
+    O IBOVESPA (Índice da Bolsa de Valores de São Paulo) é o principal índice de ações do mercado de capitais brasileiro e 
+    serve como indicador do desempenho médio das cotações das ações mais negociadas e mais representativas do mercado brasileiro. 
+    Ele é utilizado tanto para entender o comportamento do mercado acionário brasileiro como um todo, quanto como referência 
+    para investimentos. Um índice forte pode indicar um mercado em alta, com crescimento econômico e confiança dos investidores, 
+    enquanto um índice fraco pode sinalizar o contrário.
+    """
     plt.figure()
     sns.lineplot(data=df, x='ds', y='y')
     plt.xlabel('Ano')
