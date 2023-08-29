@@ -9,7 +9,7 @@ import streamlit as st
 
 st.title('Análise para predição dos valores de fechamento do índice Bovespa')
 
-tab0, tab1, tab2 = st.tabs(['Análise Exploratória', 'Modelo', 'Teste'])
+tab0, tab1 = st.tabs(['Análise Exploratória', 'Modelo'])
 
 df = pd.read_csv('Dados Históricos - Ibovespa.csv')
 
