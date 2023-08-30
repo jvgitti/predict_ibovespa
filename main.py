@@ -78,7 +78,7 @@ df_valid = df[df.ds >= '2022-08-07']
 
 
 with tab_1:
-    h = st.slider("Selecione um valor entre 200 e 400", 200, 400)
+    h = st.slider("Selecione um valor entre 50 e 260, para a predição:", 50, 260, value=155)
     model = joblib.load('model.joblib')
     forecast_df = model.predict(h=h, level=[90])
     forecast_df = forecast_df.reset_index().merge(df_valid, on=['ds', 'unique_id'], how='left')
