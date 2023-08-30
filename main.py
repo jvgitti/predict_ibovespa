@@ -1,7 +1,7 @@
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import adfuller
-from statsforecast import StatsForecast
-from statsforecast.models import Naive, MSTL
+# from statsforecast import StatsForecast
+# from statsforecast.models import Naive, MSTL
 
 import pandas as pd
 import matplotlib.pyplot as plt
