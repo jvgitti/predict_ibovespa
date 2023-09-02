@@ -98,6 +98,7 @@ with tab_0:
     ma.plot(ax = ax, legend = False, color = 'r')
 
     plt.tight_layout()
+    st.pyplot(plt)
 
     """
     Considerando que estamos trabalhando com uma seria atualmente nao-estacionaria, a primeira coisa que precisamos fazer é transforma-la. Fizemos alguns testes, primeiro com transformaçao 
