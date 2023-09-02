@@ -34,9 +34,9 @@ with tab_0:
     para investimentos. Um índice forte pode indicar um mercado em alta, com crescimento econômico e confiança dos investidores, 
     enquanto um índice fraco pode sinalizar o contrário.
 
-    Antes de predizer o fechamos da base, devemos entender o contexto inserido. Qual o comportamento da serie em questao, e identificar
-    é uma serie estacionaria, ou nao-estacionaria. No grafico abaixo, podemos visualizar - em um primeiro momento - o comportamento dos dados
-    ao longo dos anos.
+    Antes de predizer o fechamos da base, devemos entender o contexto inserido e qual o comportamento da serie em questao. No grafico 
+    abaixo, podemos visualizar - em um primeiro momento - o comportamento dos dados ao longo dos anos.
+    De maneira geral podemos visualizar que temos uma tendencia de crescimento, porem em 2020 temos uma grande queda no fechamento da bolsa.
     """
 
     plt.figure()
@@ -47,21 +47,13 @@ with tab_0:
     st.pyplot(plt)
 
     """
-    Para esta analise, extraimos 20 anos de dados. Esse conjunto foi suficiente para entender o comportamento da bolsa de valores IBOVESPA e 
-    entender as principais tendencias, principalmente porque os periodos de 2013 a 2023 foram marcados por algumas grandes quedas na bola. Conforme grafico 
-    acima, podemos observar que em linhas gerais temos uma tendencia de aumento na bolsa dese 2004.
+    Principais quedas na bolsa IBOVESPA
     """
 
     """
-    Analisando fatores externos responsaveis por grandes quedas na bolsa IBOVESPA
-    """
-
-    """
-    Entretanto a bolsa de valores foi marcada por uma series de fatores, e foi diretamente impactada por eles, abaixo temos uma representaçao de 5 quedas enfrentadas
+    A bolsa de valores foi marcada por uma series de fatores, e foi diretamente impactada por eles, abaixo temos uma representaçao de 5 quedas enfrentadas
     pelo IBOVESPA. De acordo com uma noticia divulgada pela propria B3: "A maior queda, de 22,26%, foi registrada no dia 21 de março de 1990, quando o Plano Collor foi anunciado. 
     Recentemente, a maior queda foi de 13,92%, em 16 de março de 2020, repercutindo a incerteza diante da pandemia."
-
-    A queda de 2020, pode ser facilmente identificada no primeiro grafico.
     """
     
     st.image("https://www.b3.com.br/data/files/42/20/55/D4/E0AB8810C7AB8988AC094EA8/Linha%20do%20Tempo%20Ibovespa%20B3.png")
