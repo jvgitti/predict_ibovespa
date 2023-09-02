@@ -52,7 +52,9 @@ with tab_0:
     acima, podemos observar que em linhas gerais temos uma tendencia de aumento na bolsa dese 2004.
     """
 
-    stst.subheader ("Analisando fatores externos responsaveis por grandes quedas na bolsa IBOVESPA")
+    """
+    Analisando fatores externos responsaveis por grandes quedas na bolsa IBOVESPA
+    """
 
     """
     Entretanto a bolsa de valores foi marcada por uma series de fatores, e foi diretamente impactada por eles, abaixo temos uma representaçao de 5 quedas enfrentadas
