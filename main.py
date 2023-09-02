@@ -116,18 +116,6 @@ with tab_0:
     plt.tight_layout()
     st.pyplot(plt)
 
-    
-    X_diff = df_diff.y.dropna().values
-
-    result_diff = adfuller(X_diff)
-
-    print('Teste ADF')
-    print(f'Teste estatístico: {result_diff[0]}')
-    print(f'P-value: {result_diff[1]}')
-    print('Valores críticos:')
-
-    for key, value in result_diff[4].items():
-    print(f'\t{key}: {value}')
 
 
 
