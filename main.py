@@ -36,7 +36,8 @@ with tab_0:
 
     Antes de predizer o fechamos da base, devemos entender o contexto inserido e qual o comportamento da serie em questao. No grafico 
     abaixo, podemos visualizar - em um primeiro momento - o comportamento dos dados ao longo dos anos.
-    De maneira geral podemos visualizar que temos uma tendencia de crescimento, porem em 2020 temos uma grande queda no fechamento da bolsa.
+    De maneira geral podemos visualizar que temos uma tendencia de crescimento, porem em 2020 temos uma grande queda no fechamento da bolsa, marcado
+    por um dos maiores eventos ja ocorridos na historia.
     """
 
     plt.figure()
