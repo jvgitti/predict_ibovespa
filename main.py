@@ -34,9 +34,9 @@ with tab_0:
     para investimentos. Um índice forte pode indicar um mercado em alta, com crescimento econômico e confiança dos investidores, 
     enquanto um índice fraco pode sinalizar o contrário.
 
-    Antes de predizer o fechamos da base, devemos entender o contexto inserido e qual o comportamento da serie em questao. No grafico 
+    Antes de predizer o fechamento da base, devemos entender o contexto inserido e qual o comportamento da serie em questao. No grafico 
     abaixo, podemos visualizar - em um primeiro momento - o comportamento dos dados ao longo dos anos.
-    De maneira geral podemos visualizar que temos uma tendencia de crescimento, porem em 2020 temos uma grande queda no fechamento da bolsa, marcado
+    De maneira geral podemos identificar uma tendencia de crescimento, porem em 2020 temos uma grande queda no fechamento da bolsa, marcado
     por um dos maiores eventos ja ocorridos na historia.
     """
 
@@ -63,7 +63,7 @@ with tab_0:
     """
     
     """
-    Agora que entendemos alguns fatores responsaveis pelas maiores quedas da bolsa e tambem a tendencia geral que temos, é importante analisar a decomposiçao sasonal da serie.
+    Agora que entendemos alguns fatores responsaveis pelas maiores quedas da bolsa e tambem a tendencia geral que temos, é importante analisar a decomposiçao sazonal da serie.
     Para isso decompomos a serie temporal para uma sazonalidade de 1 ano:
     """
 
@@ -80,11 +80,28 @@ with tab_0:
     """
     Aqui podemos observar com clareza a tendencia geral (grafico 2), a sazonalidade (grafico 3) e os residuos (grafico 4).
 
-    Ao trabalhar com series temporais - dependendo do modelo selecionado - é importate entender se a serie é estacionaria ou nao-estacionaria
+    Ao trabalhar com series temporais - dependendo do modelo selecionado - é importate entender se a serie é estacionaria ou nao-estacionaria. O teste Augmented Dickey-Fuller
+    nos ajuda a entender se o conjunto em questao é ou nao estacionarios:
     """
     f"""
     Aplicando-se os teste de Dickey-Fuller, temos um valor de P-value = {p_value}.
     Conclusão: série não estácionária.
+    """
+    """
+    Abaixo temos uma representaçao visual da media movel em relaçao ao valores:
+    """
+    
+ma = df.rolling(12).mean()
+
+f, ax = plt.subplots()
+df.plot(ax = ax, legend=False)
+ma.plot(ax = ax, legend = False, color = 'r')
+
+plt.tight_layout()
+
+    """
+    Considerando que estamos trabalhando com uma seria atualmente nao-estacionaria, a primeira coisa que precisamos fazer é transforma-la. Fizemos alguns testes, primeiro com transformaçao 
+    logaritimica, que apesar de alterar a escala, nao transformou em serie estacionaria:
     """
 
 
