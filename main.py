@@ -102,27 +102,31 @@ with tab_0:
 
     """
     Considerando que estamos trabalhando com uma seria atualmente nao-estacionaria, a primeira coisa que precisamos fazer é transforma-la. 
-    Fizemos alguns testes, primeiro com transformaçao logaritimica, que apesar de chegar em uma serie estacionaria, se tratando do nivel de dados
-    que estamos trabalhando, pode ser nao ser suficiente:
+    Para isso aplicamos a primeira derivada:
     """
-    df_log = np.log(df)
-    ma_log = df_log.rolling(12).mean()
+    df_diff = df.diff(1)
+    ma_diff = df_diff.rolling(247).mean()
+
+    std_diff = df_diff.rolling(247).std()
 
     f, ax = plt.subplots()
-    df_log.plot(ax = ax, legend = False)
-    ma_log.plot(ax = ax, legend = False, color = 'r')
+    df_diff.plot(ax=ax, legend=False)
+    ma_diff.plot(ax=ax, color='r', legend=False)
+    std_diff.plot(ax=ax, color='g', legend=False)
     plt.tight_layout()
     st.pyplot(plt)
 
-    X_log = df_log.y.dropna().values
-    result_log = adfuller(X_log)
+    
+    X_diff = df_diff.y.dropna().values
 
-    print("ADF")
-    print(f"Teste estatistico : {result_log[0]}")
-    print(f"P-Value : {result_log[1]}")
-    print("Valores criticos:")
+    result_diff = adfuller(X_diff)
 
-    for key, value in result_log[4].items():
+    print('Teste ADF')
+    print(f'Teste estatístico: {result_diff[0]}')
+    print(f'P-value: {result_diff[1]}')
+    print('Valores críticos:')
+
+    for key, value in result_diff[4].items():
     print(f'\t{key}: {value}')
 
 
