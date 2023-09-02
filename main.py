@@ -101,9 +101,30 @@ with tab_0:
     st.pyplot(plt)
 
     """
-    Considerando que estamos trabalhando com uma seria atualmente nao-estacionaria, a primeira coisa que precisamos fazer é transforma-la. Fizemos alguns testes, primeiro com transformaçao 
-    logaritimica, que apesar de alterar a escala, nao transformou em serie estacionaria:
+    Considerando que estamos trabalhando com uma seria atualmente nao-estacionaria, a primeira coisa que precisamos fazer é transforma-la. 
+    Fizemos alguns testes, primeiro com transformaçao logaritimica, que apesar de chegar em uma serie estacionaria, se tratando do nivel de dados
+    que estamos trabalhando, pode ser nao ser suficiente:
     """
+    df_log = np.log(df)
+    ma_log = df_log.rolling(12).mean()
+
+    f, ax = plt.subplots()
+    df_log.plot(ax = ax, legend = False)
+    ma_log.plot(ax = ax, legend = False, color = 'r')
+    plt.tight_layout()
+    st.pyplot(plt)
+
+    X_log = df_log.y.dropna().values
+    result_log = adfuller(X_log)
+
+    print("ADF")
+    print(f"Teste estatistico : {result_log[0]}")
+    print(f"P-Value : {result_log[1]}")
+    print("Valores criticos:")
+
+    for key, value in result_log[4].items():
+    print(f'\t{key}: {value}')
+
 
 
 def calcula_wmape(y_true, y_pred):
