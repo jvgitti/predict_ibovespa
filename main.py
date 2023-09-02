@@ -91,13 +91,13 @@ with tab_0:
     Abaixo temos uma representaçao visual da media movel em relaçao ao valores:
     """
     
-ma = df.rolling(12).mean()
+    ma = df.rolling(12).mean()
 
-f, ax = plt.subplots()
-df.plot(ax = ax, legend=False)
-ma.plot(ax = ax, legend = False, color = 'r')
+    f, ax = plt.subplots()
+    df.plot(ax = ax, legend=False)
+    ma.plot(ax = ax, legend = False, color = 'r')
 
-plt.tight_layout()
+    plt.tight_layout()
 
     """
     Considerando que estamos trabalhando com uma seria atualmente nao-estacionaria, a primeira coisa que precisamos fazer é transforma-la. Fizemos alguns testes, primeiro com transformaçao 
