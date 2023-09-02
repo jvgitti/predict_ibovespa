@@ -2,6 +2,7 @@ from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import adfuller
 # from statsforecast import StatsForecast
 # from statsforecast.models import Naive, MSTL
+from PIL import Image
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -32,6 +33,10 @@ with tab_0:
     Ele é utilizado tanto para entender o comportamento do mercado acionário brasileiro como um todo, quanto como referência 
     para investimentos. Um índice forte pode indicar um mercado em alta, com crescimento econômico e confiança dos investidores, 
     enquanto um índice fraco pode sinalizar o contrário.
+
+    Antes de predizer o fechamos da base, devemos entender o contexto inserido. Qual o comportamento da serie em questao, e identificar
+    é uma serie estacionaria, ou nao-estacionaria. No grafico abaixo, podemos visualizar - em um primeiro momento - o comportamento dos dados
+    ao longo dos anos.
     """
 
     plt.figure()
@@ -41,6 +46,14 @@ with tab_0:
     plt.title('Índice Bovespa')
     st.pyplot(plt)
 
+    """
+    Para esta analise, extraimos 20 anos de dados. Esse conjunto foi suficiente para entender o comportamento da bolsa de valores IBOVESPA e 
+    entender as principais tendencias. Conforme grafico acima, podemos observar que em linhas gerais temos uma tendencia de aumento na bolsa dese 2004.
+    Entretanto a bolsa de valores foi marcada por uma series de fatores, e foi diretamente impactada por eles. 
+
+    
+    """
+    st.image("https://www.b3.com.br/data/files/42/20/55/D4/E0AB8810C7AB8988AC094EA8/Linha%20do%20Tempo%20Ibovespa%20B3.png")
     """
     Decompondo a série temporal, para uma sazonalidade de 1 ano:
     """
