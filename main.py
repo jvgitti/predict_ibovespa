@@ -40,7 +40,7 @@ with tab_0:
     """
 
     plt.figure()
-    sns.lineplot(data=df, x='ds', y='y')
+    sns.lineplot(data=df, x='ds', y='y', color = 'green')
     plt.xlabel('Ano')
     plt.ylabel('Valor (R$) (em milhares)')
     plt.title('Índice Bovespa')
@@ -60,6 +60,8 @@ with tab_0:
     Entretanto a bolsa de valores foi marcada por uma series de fatores, e foi diretamente impactada por eles, abaixo temos uma representaçao de 5 quedas enfrentadas
     pelo IBOVESPA. De acordo com uma noticia divulgada pela propria B3: "A maior queda, de 22,26%, foi registrada no dia 21 de março de 1990, quando o Plano Collor foi anunciado. 
     Recentemente, a maior queda foi de 13,92%, em 16 de março de 2020, repercutindo a incerteza diante da pandemia."
+
+    A queda de 2020, pode ser facilmente identificada no primeiro grafico.
     """
     
     st.image("https://www.b3.com.br/data/files/42/20/55/D4/E0AB8810C7AB8988AC094EA8/Linha%20do%20Tempo%20Ibovespa%20B3.png")
@@ -68,7 +70,8 @@ with tab_0:
     """
     
     """
-    Decompondo a série temporal, para uma sazonalidade de 1 ano:
+    Agora que entendemos alguns fatores responsaveis pelas maiores quedas da bolsa e tambem a tendencia geral que temos, é importante analisar a decomposiçao sasonal da serie.
+    Para isso decompomos a serie temporal para uma sazonalidade de 1 ano:
     """
 
     plt.figure()
@@ -81,6 +84,11 @@ with tab_0:
     plt.tight_layout()
     st.pyplot(plt)
 
+    """
+    Aqui podemos observar com clareza a tendencia geral (grafico 2), a sazonalidade (grafico 3) e os residuos (grafico 4).
+
+    Ao trabalhar com series temporais - dependendo do modelo selecionado - é importate entender se a serie é estacionaria ou nao-estacionaria
+    """
     f"""
     Aplicando-se os teste de Dickey-Fuller, temos um valor de P-value = {p_value}.
     Conclusão: série não estácionária.
