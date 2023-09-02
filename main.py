@@ -59,7 +59,7 @@ with tab_0:
     pelo IBOVESPA. De acordo com uma noticia divulgada pela propria B3: "A maior queda, de 22,26%, foi registrada no dia 21 de março de 1990, quando o Plano Collor foi anunciado. 
     Recentemente, a maior queda foi de 13,92%, em 16 de março de 2020, repercutindo a incerteza diante da pandemia."
     """
-    """
+    
     st.image("https://www.b3.com.br/data/files/42/20/55/D4/E0AB8810C7AB8988AC094EA8/Linha%20do%20Tempo%20Ibovespa%20B3.png")
     """
     fonte: https://www.b3.com.br/pt_br/noticias/ibovespa-b3-completa-55-anos-veja-10-curiosidades-sobre-o-indice-mais-importante-do-mercado-de-acoes-brasileiro.htm
