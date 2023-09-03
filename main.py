@@ -34,10 +34,10 @@ with tab_0:
     para investimentos. Um índice forte pode indicar um mercado em alta, com crescimento econômico e confiança dos investidores, 
     enquanto um índice fraco pode sinalizar o contrário.
 
-    Antes de predizer o fechamento da base, devemos entender o contexto inserido e qual o comportamento da serie em questao. No grafico 
+    Antes de predizer o fechamento da base, devemos entender o contexto inserido e qual o comportamento da série em questão. No gráfico 
     abaixo, podemos visualizar - em um primeiro momento - o comportamento dos dados ao longo dos anos.
-    De maneira geral podemos identificar uma tendencia de crescimento, porem em 2020 temos uma grande queda no fechamento da bolsa, marcado
-    por um dos maiores eventos ja ocorridos na historia.
+    De maneira geral podemos identificar uma tendência de crescimento, porém em 2020 temos uma grande queda no fechamento da bolsa, marcado
+    por um dos maiores eventos já ocorridos na história.
     """
 
     plt.figure()
@@ -52,19 +52,19 @@ with tab_0:
     """
 
     """
-    A bolsa de valores foi marcada por uma series de fatores, e foi diretamente impactada por eles, abaixo temos uma representaçao de 5 quedas enfrentadas
-    pelo IBOVESPA. De acordo com uma noticia divulgada pela propria B3: "A maior queda, de 22,26%, foi registrada no dia 21 de março de 1990, quando o Plano Collor foi anunciado. 
+    A bolsa de valores foi marcada por uma série de fatores, e foi diretamente impactada por eles, abaixo temos uma representação de 5 quedas enfrentadas
+    pelo IBOVESPA. De acordo com uma notícia divulgada pela pr[opria B3: "A maior queda, de 22,26%, foi registrada no dia 21 de março de 1990, quando o Plano Collor foi anunciado. 
     Recentemente, a maior queda foi de 13,92%, em 16 de março de 2020, repercutindo a incerteza diante da pandemia."
     """
     
     st.image("https://www.b3.com.br/data/files/42/20/55/D4/E0AB8810C7AB8988AC094EA8/Linha%20do%20Tempo%20Ibovespa%20B3.png")
     """
-    fonte: https://www.b3.com.br/pt_br/noticias/ibovespa-b3-completa-55-anos-veja-10-curiosidades-sobre-o-indice-mais-importante-do-mercado-de-acoes-brasileiro.htm
+    Fonte: https://www.b3.com.br/pt_br/noticias/ibovespa-b3-completa-55-anos-veja-10-curiosidades-sobre-o-indice-mais-importante-do-mercado-de-acoes-brasileiro.htm
     """
     
     """
-    Agora que entendemos alguns fatores responsaveis pelas maiores quedas da bolsa e tambem a tendencia geral que temos, é importante analisar a decomposiçao sazonal da serie.
-    Para isso decompomos a serie temporal para uma sazonalidade de 1 ano:
+    Agora que entendemos alguns fatores responsáveis pelas maiores quedas da bolsa e também a tendência geral que temos, é importante analisar a decomposição sazonal da série.
+    Para isso decompomos a série temporal para uma sazonalidade de 1 ano:
     """
 
     plt.figure()
@@ -78,9 +78,9 @@ with tab_0:
     st.pyplot(plt)
 
     """
-    Aqui podemos observar com clareza a tendencia geral (grafico 2), a sazonalidade (grafico 3) e os residuos (grafico 4).
+    Aqui podemos observar com clareza a tendência geral (gráfico 2), a sazonalidade (gráfico 3) e os resíduos (gráfico 4).
 
-    Ao trabalhar com series temporais - dependendo do modelo selecionado - é importate entender se a serie é estacionaria ou nao-estacionaria. O teste Augmented Dickey-Fuller
+    Ao trabalhar com séries temporais - dependendo do modelo selecionado - é importate entender se a série é estacionaria ou nao-estacionaria. O teste Augmented Dickey-Fuller
     nos ajuda a entender se o conjunto em questao é ou nao estacionarios:
     """
     f"""
@@ -88,20 +88,20 @@ with tab_0:
     que temos uma série não estacionária.
     """
     """
-    Abaixo temos uma representaçao visual da media movel em relaçao ao valores:
+    Abaixo temos uma representação visual da média movel em relaçao ao valores:
     """
     
-    ma = df.rolling(12).mean()
+    ma = df.rolling(260).mean()
 
     f, ax = plt.subplots()
-    df.plot(ax = ax, legend=False)
-    ma.plot(ax = ax, legend = False, color = 'r')
+    df.plot(ax=ax, legend=False)
+    ma.plot(ax=ax, legend = False, color = 'r')
 
     plt.tight_layout()
     st.pyplot(plt)
 
     """
-    Considerando que estamos trabalhando com uma seria atualmente nao-estacionaria, a primeira coisa que precisamos fazer é transforma-la. 
+    Considerando que estamos trabalhando com uma série atualmente não-estacionaria, a primeira coisa que precisamos fazer é transforma-la. 
     Para isso aplicamos a primeira derivada:
     """
     df_diff = df.diff(1)
