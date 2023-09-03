@@ -71,9 +71,13 @@ with tab_0:
     resultados = seasonal_decompose(df, period=247)
     fig, axes = plt.subplots(4, 1, figsize=(15, 10))
     resultados.observed.plot(ax=axes[0])
+    axes[0].set_xlabel('Ano')
     resultados.trend.plot(ax=axes[1])
+    axes[1].set_xlabel('Ano')
     resultados.seasonal.plot(ax=axes[2])
+    axes[2].set_xlabel('Ano')
     resultados.resid.plot(ax=axes[3])
+    axes[3].set_xlabel('Ano')
     plt.tight_layout()
     st.pyplot(plt)
 
@@ -96,6 +100,8 @@ with tab_0:
     f, ax = plt.subplots()
     df.plot(ax=ax, legend=False)
     ma.plot(ax=ax, legend = False, color = 'r')
+    plt.xlabel('Ano')
+    plt.ylabel('Valor (R$) (em milhares)')
 
     plt.tight_layout()
     st.pyplot(plt)
@@ -113,6 +119,7 @@ with tab_0:
     df_diff.plot(ax=ax, legend=False)
     ma_diff.plot(ax=ax, color='r', legend=False)
     std_diff.plot(ax=ax, color='g', legend=False)
+    plt.xlabel('Ano')
     plt.tight_layout()
     st.pyplot(plt)
 
@@ -170,6 +177,7 @@ with tab_1:
     sns.lineplot(data=forecast_df, x='ds', y='MSTL', color='g', label='Predito')
     sns.lineplot(data=forecast_df, x='ds', y='MSTL-lo-90', color='r', label='Intervalo de confianca')
     sns.lineplot(data=forecast_df, x='ds', y='MSTL-hi-90', color='r')
+    plt.xlabel('Ano')
     plt.legend()
     plt.tight_layout()
     st.pyplot(plt)
