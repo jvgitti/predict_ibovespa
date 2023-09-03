@@ -185,7 +185,7 @@ with tab_1:
     fig.update_traces(line=dict(color='aquamarine'), selector=dict(name='Intervalo de confiança'))
 
     fig.update_layout(
-        title='Gráfico de Três Linhas com Cores Diferentes',
+        title='Ibovespa - Predição do valor de fechamento',
         xaxis_title='Ano',
         yaxis_title='Valor (R$) (em milhares)',
         legend=dict(
