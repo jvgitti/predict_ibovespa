@@ -171,16 +171,30 @@ with tab_1:
 
     wmape = calcula_wmape(forecast_df['y'].values, forecast_df['MSTL'].values)
 
-    plt.figure(figsize=(20, 6))
-    sns.lineplot(data=df_treino[df_treino.ds >= '2019-05-01'], x='ds', y='y', color='b', label='Real')
-    sns.lineplot(data=forecast_df, x='ds', y='y', color='b')
-    sns.lineplot(data=forecast_df, x='ds', y='MSTL', color='g', label='Predito')
-    sns.lineplot(data=forecast_df, x='ds', y='MSTL-lo-90', color='r', label='Intervalo de confianca')
-    sns.lineplot(data=forecast_df, x='ds', y='MSTL-hi-90', color='r')
-    plt.xlabel('Ano')
-    plt.legend()
-    plt.tight_layout()
-    st.pyplot(plt)
+    import plotly.express as px
+    import plotly.graph_objects as go
+
+    fig = px.line(df_treino[df_treino.ds >= '2019-05-01'], x='ds', y='y', line_shape='linear')
+    fig.add_scatter(x=forecast_df['ds'], y=forecast_df['y'], mode='lines', name='Real')
+    fig.add_scatter(x=forecast_df['ds'], y=forecast_df['MSTL'], mode='lines', name='Predito')
+    fig.add_scatter(x=forecast_df['ds'], y=forecast_df['MSTL-lo-90'], mode='lines', name='Intervalo de confiança')
+    fig.add_scatter(x=forecast_df['ds'], y=forecast_df['MSTL-hi-90'], mode='lines', name='Intervalo de confiança', showlegend=False)
+
+    fig.update_traces(line=dict(color='blue'), selector=dict(name='Real'))
+    fig.update_traces(line=dict(color='green'), selector=dict(name='Predito'))
+    fig.update_traces(line=dict(color='aquamarine'), selector=dict(name='Intervalo de confiança'))
+
+    fig.update_layout(
+        title='Gráfico de Três Linhas com Cores Diferentes',
+        xaxis_title='Ano',
+        yaxis_title='Valor (R$) (em milhares)',
+        legend=dict(
+            x=0,
+            y=-0.2,
+            orientation="h",
+        )
+    )
+    st.plotly_chart(fig, use_container_width=True)
 
     f"""
     WMAPE para o período fornecido: {wmape:.2%}
