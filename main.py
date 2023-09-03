@@ -84,8 +84,8 @@ with tab_0:
     nos ajuda a entender se o conjunto em questao é ou nao estacionarios:
     """
     f"""
-    Aplicando-se os teste de Dickey-Fuller, temos um valor de P-value = {p_value}.
-    Conclusão: série não estácionária.
+    Aplicando-se o teste de Dickey-Fuller, temos um valor de P-value = {p_value}. Dessa maneira, não podemos rejeitar a hipótese nula, o que significa
+    que temos uma série não estacionária.
     """
     """
     Abaixo temos uma representaçao visual da media movel em relaçao ao valores:
@@ -116,7 +116,13 @@ with tab_0:
     plt.tight_layout()
     st.pyplot(plt)
 
+    X_diff = df_diff.y.dropna().values
+    result_diff = adfuller(X_diff)
 
+    f"""
+    Nesse novo formato, aplicamos novamente o teste de Dickey-Fuller, e chegamos a um valor de P-value muito próximo a 
+    0, de modo que podemos rejeitar a hipótese nula, e considerar que a série agora é estacionária.
+    """
 
 
 def calcula_wmape(y_true, y_pred):
@@ -136,13 +142,27 @@ df_valid = df[df.ds >= '2022-08-07']
 
 
 with tab_1:
+    """
+    Avaliamos e testamos diversos modelos para a predição dos valores de fechamento, e o que apresentou o melhor resultado foi o modelo Naive,
+    juntamente com o MSTL, pois conseguimos passar diversas sazonalidades para o modelo em questão.
+    
+    Estudando as variáveis que podem interferir no nosso modelo, optamos por treinar o modelo com uma sazonalidade anual, mensal e semanal.
+    Como período, utilizamos o período diário, considerando apenas os dias úteis, em que a bolsa està aberta.
+    
+    Utilizamos todo o período de dados para treinar o modelo (de 2003 à 2023).
+    
+    Abaixo segue o resultado do modelo, com os dados reais de 2019 até os dias atuais, e a predição realizada a partir de Agosto/2022.
+    
+    Com a barra, pode-se escolher o período de predição desejado, com o máximo de 260 dias úteis, aproximadamente 1 ano no total.
+    """
+
     h = st.slider("Selecione um valor entre 50 e 260, para a predição:", 50, 260, value=155)
     model = joblib.load('model.joblib')
     forecast_df = model.predict(h=h, level=[90])
     forecast_df = forecast_df.reset_index().merge(df_valid, on=['ds', 'unique_id'], how='left')
     forecast_df = forecast_df.dropna()
 
-    wmape2 = calcula_wmape(forecast_df['y'].values, forecast_df['MSTL'].values)
+    wmape = calcula_wmape(forecast_df['y'].values, forecast_df['MSTL'].values)
 
     plt.figure(figsize=(20, 6))
     sns.lineplot(data=df_treino[df_treino.ds >= '2019-05-01'], x='ds', y='y', color='b', label='Real')
@@ -155,5 +175,9 @@ with tab_1:
     st.pyplot(plt)
 
     f"""
-    WMAPE para o período fornecido: {wmape2:.2%}
+    WMAPE para o período fornecido: {wmape:.2%}
+    """
+
+    f"""
+    Variando-se o período de predição, percebe-se que o modelo varia o valor do WMAPE, apresentando um resultado interessante no longo prazo.
     """
