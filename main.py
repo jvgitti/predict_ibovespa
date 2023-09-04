@@ -174,7 +174,7 @@ with tab_1:
     import plotly.express as px
     import plotly.graph_objects as go
 
-    fig = px.line(df_treino[df_treino.ds >= '2019-05-01'], x='ds', y='y', line_shape='linear', color = 'gray')
+    fig = px.line(df_treino[df_treino.ds >= '2019-05-01'], x='ds', y='y', line_shape='linear')
     fig.add_scatter(x=forecast_df['ds'], y=forecast_df['y'], mode='lines', name='Real')
     fig.add_scatter(x=forecast_df['ds'], y=forecast_df['MSTL'], mode='lines', name='Predito')
     fig.add_scatter(x=forecast_df['ds'], y=forecast_df['MSTL-lo-90'], mode='lines', name='Intervalo de confiança')
