@@ -41,7 +41,7 @@ with tab_0:
     """
 
     plt.figure()
-    sns.lineplot(data=df, x='ds', y='y', color = 'green')
+    sns.lineplot(data=df, x='ds', y='y', color = 'gray')
     plt.xlabel('Ano')
     plt.ylabel('Valor (R$) (em milhares)')
     plt.title('Índice Bovespa')
@@ -174,7 +174,7 @@ with tab_1:
     import plotly.express as px
     import plotly.graph_objects as go
 
-    fig = px.line(df_treino[df_treino.ds >= '2019-05-01'], x='ds', y='y', line_shape='linear')
+    fig = px.line(df_treino[df_treino.ds >= '2019-05-01'], x='ds', y='y', line_shape='linear', color = 'gray')
     fig.add_scatter(x=forecast_df['ds'], y=forecast_df['y'], mode='lines', name='Real')
     fig.add_scatter(x=forecast_df['ds'], y=forecast_df['MSTL'], mode='lines', name='Predito')
     fig.add_scatter(x=forecast_df['ds'], y=forecast_df['MSTL-lo-90'], mode='lines', name='Intervalo de confiança')
