@@ -85,7 +85,7 @@ with tab_0:
     Aqui podemos observar com clareza a tendência geral (gráfico 2), a sazonalidade (gráfico 3) e os resíduos (gráfico 4).
 
     Ao trabalhar com séries temporais - dependendo do modelo selecionado - é importate entender se a série é estacionaria ou nao-estacionaria. O teste Augmented Dickey-Fuller
-    nos ajuda a entender se o conjunto em questao é ou nao estacionarios:
+    nos ajuda a entender se o conjunto em questao é ou nao estacionarios.
     """
     f"""
     Aplicando-se o teste de Dickey-Fuller, temos um valor de P-value = {p_value}. Dessa maneira, não podemos rejeitar a hipótese nula, o que significa
@@ -181,8 +181,8 @@ with tab_1:
     fig.add_scatter(x=forecast_df['ds'], y=forecast_df['MSTL-hi-90'], mode='lines', name='Intervalo de confiança', showlegend=False)
 
     fig.update_traces(line=dict(color='blue'), selector=dict(name='Real'))
-    fig.update_traces(line=dict(color='green'), selector=dict(name='Predito'))
-    fig.update_traces(line=dict(color='aquamarine'), selector=dict(name='Intervalo de confiança'))
+    fig.update_traces(line=dict(color='red'), selector=dict(name='Predito'))
+    fig.update_traces(line=dict(color='green'), selector=dict(name='Intervalo de confiança'))
 
     fig.update_layout(
         title='Ibovespa - Predição do valor de fechamento',
